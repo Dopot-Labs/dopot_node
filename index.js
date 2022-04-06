@@ -1,3 +1,4 @@
+const OrbitDB = require('orbit-db')
 require('dotenv').config()
 const all = require('it-all')
 const CID = require('cids')
@@ -8,6 +9,7 @@ const bs58 = require('bs58')
 const providers = require('./config.json');
 const provider = providers[Math.floor(Math.random()*providers.length)];
 const network = 5;
+const orbitFeed = "/orbitdb/zdpuAorFE8WDJ3n7Z6H8H7LxgXLPsMcxYF2xRKUEA6R6efy5e/node";
 const web3 = new Web3(new Web3.providers.WebsocketProvider(provider));
 
 const ProjectFactory = require("./contracts/ProjectFactory.json");
@@ -19,6 +21,7 @@ const DopotRewardInstance = new web3.eth.Contract(DopotReward.abi, deployedNetwo
 
 (async ()=>{
 const ipfs = await IPFS.create();
+
 
 function getMultihashFromBytes32(multihash) {
   var { digest, hashFunction, size } = multihash;
@@ -76,5 +79,9 @@ DopotRewardInstance.events.RewardMinted(options)
 .on('changed', changed => console.log("changed: " + changed))
 .on('error', err => console.dir(err))
 //.on('connected', str => console.log("connected: " + str))
+
+
+
+
 
 })();
