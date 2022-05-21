@@ -53,8 +53,8 @@ let options = {
 ProjectFactoryInstance.events.ProjectCreated(options)
 .on('data', async event => {
   var values = event.returnValues;
-  values.projectMedia.forEach(async media => await pin(getMultihashFromBytes32(media)));
-  values.rewardTiers.forEach(async tier => await pin(getMultihashFromBytes32(tier)));
+  await pin(getMultihashFromBytes32(values.projectMedia));
+  values.rewardTiers.forEach(async tier => await pin(getMultihashFromBytes32(tier)));  
   await pin(getMultihashFromBytes32(values.survey));
 })
 .on('changed', changed => console.log("changed: " + changed))
