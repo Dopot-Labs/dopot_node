@@ -1,2 +1,4 @@
-# ETHBerlin-Pinata-Oracle-Node
-This is the NodeJS client that watches the Pinata smart contracts and handles pinning to IPFS
+# Dopot node
+
+This program makes sure all media files added to Dopot smart contracts are replicated using IPFS.
+You can run this on any low power pc and help the platform stay decentralized and available forever.
